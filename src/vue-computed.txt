@@ -1,0 +1,83 @@
+<template>
+  <div>
+    <h1>Selamat Datang di Vue.js Land</h1>
+    <p>ini adalah komponen vue pertamaku</p>
+  </div>
+  <hr>
+  <div>
+    <I><h2>Formulir</h2></I>
+    <form @submit.prevent="submitForm">
+    <label for="">Nama </label>
+    <input class="{'is-invalid':isInvalidName}" type="text" name="nama" v-model="kontak.name">
+    <div v-if="isInvalidName" class="error-message">
+      Nama Harus di Isi!
+    </div>
+    <br>
+    <label for="">Email </label>
+    <input class="{'is-invalid':isInvalidEmail}" type="text" name="email" v-model="kontak.email">
+    <div v-if="isInvalidEmail" class="error-message">
+      Email Harus di Isi!
+    </div>
+    <br>
+    <button type="submit">Simpan</button>
+    </form>
+  </div>
+  <div v-if="showResult">
+      Nama : {{ name }} <br>
+      Email : {{ email }}
+    </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+export default {
+ 
+  data() {
+    return {
+      kontak: {
+        name: '',
+        email: '',
+      },
+      showResult: ref(false),
+      name: ref(''),
+      email: ref(''),
+    };
+  },
+  computed: {
+    isInvalidName() {
+      return this.name.length <=1;
+    },
+    isInvalidEmail() {
+      return this.email.length <=1;
+    }
+  },
+  methods: {
+    submitForm() {
+      this.name = this.kontak.name;
+      this.email = this.kontak.email;
+      this.showResult = true;
+      this.isInvalidName = false;
+      this.isInvalidEmail = false;
+    },
+  },
+}; 
+</script>
+<style>
+h1 {
+  color: lightpink;
+}
+h2 {
+  color: white;
+}
+p{
+  color: lightcoral;
+}
+.error-message{
+  color: red;
+  margin-top: 5px;
+}
+
+.is invalid{
+  border-color: red;
+}
+</style>

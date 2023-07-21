@@ -1,0 +1,82 @@
+<script setup>
+import { ref } from 'vue'
+
+const msg = "Hello World"
+const rawHtml ="<li>Teks Ini Berwarna Merah</li>"
+let number=1;
+let a=10
+let b=5
+let c=a+b
+const link = "https://youtu.be/YT08A8Jucj0"
+
+//pengulangan
+let data = [
+  { nama: 'Linda', kelas: 'XII rpl 1', alamat: 'bandung', kelamin: 'perempuan' }, 
+  { nama: 'Asep', kelas: 'XII rpl 2', alamat: 'bandung', kelamin: 'laki laki' }, 
+  { nama: 'Putri', kelas: 'XII rpl 3', alamat: 'surabaya', kelamin: 'perempuan' }, 
+  { nama: 'Dimas', kelas: 'XII rpl 3', alamat: 'bandung', kelamin: 'laki laki' }, 
+  { nama: 'Sarah', kelas: 'XII rpl 1', alamat: 'bandung', kelamin: 'perempuan' }, 
+]
+</script>
+
+<template>
+  <div v-bind="dynamicId" id="app">
+    <h1>{{ msg }}</h1>
+
+    <span style="color: red" v-html="rawHtml" ></span>
+    <button :disabled="isButtonDisabled"><a :href="link"> Youtube </a></button> <br>
+    Bilangan 1 = {{ a }}<br>
+    Bilangan 2 = {{ b }}<br>
+    Hasil = {{ c }}
+  </div>
+
+  <!-- for -->
+  <br> <u>Pengulangan</u>
+  <ol>
+    <li v-for="siswa in data">
+      {{ siswa.nama }} {{ siswa.kelas }}
+    </li>
+  </ol>
+
+  <br> <u>Membuat Tabel</u>
+  <table border="1">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Kelas</th>
+      <th>Alamat</th>
+      <th>Jenis Kelamin</th>
+    </tr>
+    <tr v-for="siswa in data">
+      <td>{{ number++ }}</td>
+      <td>{{ siswa.nama }}</td>
+      <td>{{ siswa.kelas }}</td>
+      <td>{{ siswa.alamat }}</td>
+      <td>{{ siswa.kelamin }}</td>
+    </tr>
+</table>
+
+</template>
+
+----------------------------------------------------------------------------------------------
+
+ <div>
+    <h4>List hewan</h4>
+    <ul>
+      <li v-for="hewan in daftarHewan" key="hewan.id">
+        {{ hewan.nama }}
+      </li>
+    </ul>
+  </div>
+
+...............................................................
+
+  data() {
+    return{
+      daftarHewan: [
+        { id: 1, nama: "Burung"},
+        { id: 2, nama: "Kucing"},
+        { id: 3, nama: "Jerapah"},
+      ]
+    }
+  },
