@@ -1,0 +1,23 @@
+<template>
+  <div>
+        <headers a="Headers"></headers>
+        <br>
+      <fieldset>
+      <h3>Hallo ini adalah komponen utama</h3>
+      <my-component nama="Lindase" umur="17"></my-component>
+    </fieldset>
+  </div>
+</template>
+
+<script>
+import headers from './components/icons/headers.vue';
+import MyComponent from './components/MyComponent.vue';
+export default {
+
+  components: {
+    headers,
+    MyComponent
+  }
+
+}
+</script>
